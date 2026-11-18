@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta name="title" content="Unified Prescribed-Path Planning and Feasibility Checking Across Redundant Manipulators">
-  <meta name="description" content="A graph-based trajectory planning framework that separates configuration-continuous IK path selection from fixed-path time scaling, with a common TOPP-RA backend evaluated across four redundant manipulation platform classes.">
+  <meta name="description" content="GRAFT plans a timed trajectory for a prescribed path, or rejects it with a diagnostic, on serial, cooperative dual-arm, aerial and mobile redundant manipulators, with one unmodified TOPP-RA timing stage.">
   <meta name="keywords" content="redundant manipulation, inverse kinematics, task-space trajectory planning, time-optimal path parameterization, TOPP-RA, dual-arm, aerial manipulation, mobile manipulation">
   <meta name="author" content="Daum Park, Sanghyun Kim">
   <meta name="robots" content="index, follow">
@@ -14,16 +14,16 @@
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="GRAFT Project Page">
   <meta property="og:title" content="Unified Prescribed-Path Planning and Feasibility Checking Across Redundant Manipulators">
-  <meta property="og:description" content="Graph-based IK path selection + fixed-path TOPP-RA timing, unified across serial, dual-arm, aerial, and mobile manipulators.">
-  <meta property="og:image" content="static/images/fig_pipeline.png">
+  <meta property="og:description" content="Graph-based IK path selection and fixed-path TOPP-RA timing, unified across serial, dual-arm, aerial, and mobile manipulators.">
+  <meta property="og:image" content="static/images/rev/fig_graft.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Proposed trajectory planning pipeline">
+  <meta property="og:image:alt" content="The GRAFT planning pipeline">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Unified Prescribed-Path Planning and Feasibility Checking Across Redundant Manipulators">
-  <meta name="twitter:description" content="Graph-based IK path selection + fixed-path TOPP-RA timing, unified across serial, dual-arm, aerial, and mobile manipulators.">
-  <meta name="twitter:image" content="static/images/fig_pipeline.png">
+  <meta name="twitter:description" content="Graph-based IK path selection and fixed-path TOPP-RA timing, unified across serial, dual-arm, aerial, and mobile manipulators.">
+  <meta name="twitter:image" content="static/images/rev/fig_graft.png">
 
   <meta name="citation_title" content="Unified Prescribed-Path Planning and Feasibility Checking Across Redundant Manipulators">
   <meta name="citation_author" content="Daum Park">
@@ -48,7 +48,7 @@
   <link rel="apple-touch-icon" href="static/images/favicon.ico">
 
   <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/index.css?v=10">
+  <link rel="stylesheet" href="static/css/index.css?v=11">
 
   <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -85,31 +85,30 @@
             <h1 class="title is-1 publication-title">Unified Prescribed-Path Planning and Feasibility Checking Across Redundant Manipulators</h1>
 
             <div class="is-size-5 publication-authors">
-              <span class="author-block"><a href="#daum-park">Daum Park</a><sup>1</sup></span>
-              <span class="author-block"><a href="#sanghyun-kim">Sanghyun Kim</a><sup>1,*</sup></span>
+              <span class="author-block">Daum Park</span>
+              <span class="author-block">Sanghyun Kim<sup>&dagger;</sup></span>
             </div>
 
             <div class="publication-authors publication-details">
               <span class="author-block affiliation-line">
-                <sup>1</sup>Department of Mechanical Engineering, Kyung Hee University
+                Department of Mechanical Engineering, Kyung Hee University
               </span>
-              <span class="corresponding-note"><sup>*</sup>Corresponding author</span>
+              <span class="corresponding-note"><sup>&dagger;</sup>Corresponding author</span>
               <span class="publication-venue">
-                Manuscript under review at IEEE Transactions on Automation Science and Engineering (T-ASE)
+                IEEE T-ASE 2026
               </span>
             </div>
 
             <div class="publication-links" aria-label="Publication links">
               <span class="link-block">
                 <a class="external-link button is-normal is-rounded is-dark template-link-button"
-                   aria-disabled="true" aria-label="Paper, coming soon" title="Coming soon">
+                   aria-disabled="true" aria-label="arXiv, coming soon" title="Coming soon">
                   <span class="icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M14 2v6h6"/>
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M3.8423 0a1.0037 1.0037 0 0 0-.922.6078c-.1536.3687-.0438.6275.2938 1.1113l6.9185 8.3597-1.0223 1.1058a1.0393 1.0393 0 0 0 .003 1.4229l1.2292 1.3135-5.4391 6.4444c-.2803.299-.4538.823-.2971 1.1986a1.0253 1.0253 0 0 0 .9585.635.9133.9133 0 0 0 .6891-.3405l5.783-6.126 7.4902 8.0051a.8527.8527 0 0 0 .6835.2597.9575.9575 0 0 0 .8777-.6138c.1577-.377-.017-.7502-.306-1.1407l-7.0518-8.3418 1.0632-1.13a.9626.9626 0 0 0 .0089-1.3165L4.6336.4639s-.3733-.4535-.768-.463zm0 .272h.0166c.2179.0052.4874.2715.5644.3639l.005.006.0052.0055 10.169 10.9905a.6915.6915 0 0 1-.0072.945l-1.0666 1.133-1.4982-1.7724-8.5994-10.39c-.3286-.472-.352-.6183-.2592-.841a.7307.7307 0 0 1 .6704-.4401Zm14.341 1.5701a.877.877 0 0 0-.6554.2418l-5.6962 6.1584 1.6944 1.8319 5.3089-6.5138c.3251-.4335.479-.6603.3247-1.0292a1.1205 1.1205 0 0 0-.9763-.689zm-7.6557 12.2823 1.3186 1.4135-5.7864 6.1295a.6494.6494 0 0 1-.4959.26.7516.7516 0 0 1-.706-.4669c-.1119-.2682.0359-.6864.2442-.9083l.0051-.0055.0047-.0055z"/>
                     </svg>
                   </span>
-                  <span class="link-label">Paper</span>
+                  <span class="link-label">arXiv</span>
                   <span class="link-coming-soon">Coming soon</span>
                 </a>
               </span>
@@ -117,12 +116,23 @@
                 <a class="external-link button is-normal is-rounded is-dark template-link-button"
                    aria-disabled="true" aria-label="Code, coming soon" title="Coming soon">
                   <span class="icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="m8 9-3 3 3 3M16 9l3 3-3 3M14 5l-4 14"/>
+                    <svg viewBox="0 0 16 16" fill="currentColor">
+                      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
                     </svg>
                   </span>
                   <span class="link-label">Code</span>
                   <span class="link-coming-soon">Coming soon</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a class="external-link button is-normal is-rounded is-dark"
+                   href="https://youtu.be/TmDMm1sSIAo" target="_blank" rel="noopener noreferrer" aria-label="Video on YouTube">
+                  <span class="icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="currentColor" style="width: 1rem; height: 1rem;">
+                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                  </span>
+                  <span>Video</span>
                 </a>
               </span>
             </div>
@@ -149,9 +159,13 @@
                 max-width: 100%;
               }
               .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+              .result-table td, .result-table th { vertical-align: middle; white-space: nowrap; }
+              .result-table .group-row td { text-align: left; font-weight: 700; background: #f5f5f5; }
+              .result-table td.method { text-align: left; }
+              .note-lines { font-size: 0.85rem; line-height: 1.55; color: #4a4a4a; margin-top: 0.6rem; }
             </style>
             <div class='embed-container'>
-                <iframe src='https://www.youtube.com/embed/kqq8yOg0zn8' frameborder='0' allowfullscreen></iframe>
+                <iframe src='https://www.youtube.com/embed/TmDMm1sSIAo' frameborder='0' allowfullscreen></iframe>
             </div>
           </div>
         </div>
@@ -166,23 +180,21 @@
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              A redundant robot following a prescribed task-space path faces two coupled choices at each
-              waypoint: which inverse-kinematics (IK) branch to follow, and how fast to traverse the path
-              within the platform's actuation limits. Conventionally the planner that resolves them is rebuilt
-              per platform, and a geometrically valid path may still be infeasible to execute. We show this
-              per-platform rebuilding is largely unnecessary: across a serial arm, a cooperative dual-arm
-              system, an aerial manipulator, and a mobile manipulator&mdash;platforms that constrain motion
-              through unrelated mechanisms&mdash;fixed-path timing feasibility reduces to one computable
-              condition, membership in a closed interval of admissible path accelerations, so a single
-              TOPP-RA backend applies to all of them without modification. GRAFT decouples path selection
-              (dynamic programming on a layered DAG, with a timing-invariant static preview) from fixed-path
-              time scaling into one offline layer, used unchanged across all four platforms. For a prescribed
-              path it returns a timed trajectory that passes the platform-model checks, or rejects the path
-              with a diagnostic before commissioning. On an uncurated suite of random prescribed paths, GRAFT
-              admits no model-infeasible path&mdash;zero false accepts&mdash;while recovering every path any
-              compared method can solve; a GRAFT-planned trajectory executes on a physical dual-arm system;
-              and on a simulated rail-arm cell beyond these four, the same load-aware selection extends the
-              feasible payload by about <em>17%</em> over load-agnostic baselines.
+              When automation prescribes the tool path, a redundant robot must choose an inverse-kinematics
+              branch per waypoint and a speed within actuation limits. Planners are rebuilt per platform, and
+              geometrically valid paths may be infeasible. We show that for robots as different as serial,
+              cooperative dual-arm, aerial, and mobile manipulators, fixed-path timing feasibility reduces to one
+              computable condition: membership in a closed interval of admissible path accelerations. A single
+              unmodified Time-Optimal Path Parameterization solver serves them all, barring non-convex timing
+              feasibility or an unresolved discrete mode. GRAFT (Graph-based Redundancy Adaptation with
+              Fixed-path Time Scaling) builds on this reduction as one offline layer that returns a timed
+              trajectory passing the platform-model checks or rejects the path with a diagnostic before
+              commissioning. Across 400 uncurated paths, no trajectory GRAFT returns fails a 0.1&nbsp;ms replay,
+              bounding the per-path false-accept rate at 3.0% per class and 0.75% pooled (one-sided 95%
+              Clopper&ndash;Pearson), and no compared method at its reported setting recovers more on any class.
+              A planned trajectory executes on dual-arm hardware. On a rail-arm workcell beyond the four,
+              load-aware selection extends the feasible payload by a mean 17.4% across the seventeen of twenty
+              paths GRAFT validates (95% CI 14.1&ndash;20.7%).
             </p>
           </div>
         </div>
@@ -193,115 +205,29 @@
   <section class="section hero is-light">
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
-        <div class="column"><h2 class="title is-3">Methodology</h2></div>
+        <div class="column"><h2 class="title is-3">Method</h2></div>
       </div>
 
       <div style="text-align: center; margin-bottom: 1rem;">
-        <img src="static/images/fig_pipeline.png" alt="Proposed trajectory planning pipeline"
-             style="width: 100%; max-width: 1100px; display: block; margin: 0 auto 1.5rem; border-radius: 6px;">
+        <a href="static/images/rev/fig_graft.pdf" title="Open the figure as PDF">
+          <img src="static/images/rev/fig_graft.png" alt="The GRAFT planning pipeline"
+               style="width: 100%; max-width: 1100px; display: block; margin: 0 auto 1.5rem; border-radius: 6px;">
+        </a>
         <p class="fig-caption" style="font-size: 1rem; line-height: 1.6;">
-          <strong>Pipeline overview.</strong>
-          The two stages&mdash;geometric path selection and fixed-path time scaling&mdash;are bridged by
-          path fixation. Geometric path selection produces a configuration-continuous IK path on a layered DAG;
-          fixed-path time scaling solves a TOPP instance using platform-specific acceleration-bound intervals.
-          The platform evaluator <em>F<sub>plat</sub></em> supplies seven adapter components without touching
-          either stage's shared logic.
+          <strong>The GRAFT planning pipeline.</strong>
+          Two stages, geometric path selection and fixed-path time scaling, are separated by path fixation.
+          A platform supplies its own model components without modifying either stage, and a platform-model
+          check runs on the timed trajectory before it is returned.
         </p>
       </div>
 
-      <div class="columns is-multiline" style="margin-top: 1.5rem;">
-
-        <div class="column is-full">
-          <div class="method-card is-horizontal">
-            <div class="card-content">
-              <div class="card-tag">Stage 1 &mdash; Geometric Path Selection</div>
-              <h4>Candidate Sets, Static Preview, and Layered DAG</h4>
-            </div>
-            <div>
-              <p>
-                At each task-space waypoint <em>y<sub>k</sub></em>, a platform-specific generator
-                Gen<sub>plat</sub> samples a finite candidate set <em>C<sub>k</sub></em> from an
-                IK solver bank (multistart FABRIK + damped least-squares). Each candidate is screened by a
-                node-validity predicate <em>V<sub>k</sub></em>&mdash;sampled pose satisfaction, joint or
-                allocation limits, collision clearance, and a static support-wrench or static-torque preview
-                that catches timing-invariant infeasibility before graph inclusion. Adjacent candidates are
-                connected by an edge predicate &epsilon;<sub>k</sub> that encodes sampled continuity, velocity
-                bounds, and platform-specific transition constraints (e.g., nonholonomic connectors). A single
-                backward sweep on the resulting layered DAG yields the globally optimal finite-graph path in
-                <em>O</em>(<em>NK</em><sup>2</sup>) relaxations; if the terminal reachable set is empty, the
-                planner reports a graph-disconnection failure rather than invoking adaptive resampling.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="column is-full">
-          <div class="method-card is-horizontal">
-            <div class="card-content">
-              <div class="card-tag">Stage 2 &mdash; Fixed-Path Time Scaling</div>
-              <h4>Common TOPP-RA Backend via Acceleration-Bound Intervals</h4>
-            </div>
-            <div>
-              <p>
-                Once the state path is fixed, finding a feasible schedule is a Time-Optimal Path
-                Parameterization (TOPP) instance. The path is parameterized by arc length
-                <em>s</em>&nbsp;&isin;&nbsp;[0, <em>S</em>], with optimization variables
-                <em>x<sub>k</sub></em>&nbsp;=&nbsp;<em>&sdot;s<sub>k</sub></em><sup>2</sup> and
-                <em>u<sub>k</sub></em>&nbsp;=&nbsp;<em>&sdot;&sdot;s<sub>k</sub></em>.
-                Platform-specific feasibility enters through an acceleration-bound function
-                <em>B<sub>plat</sub></em> returning, at each grid point, a closed interval
-                [<em>u<sub>lo</sub></em>, <em>u<sub>hi</sub></em>]. A backward/forward reachability sweep
-                in the path-coordinate variables produces the speed profile along the upper boundary of the
-                controllable set. The four evaluated platform classes share this backend without modification.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="column is-full">
-          <div class="method-card is-horizontal">
-            <div class="card-content">
-              <div class="card-tag">Platform-Admissibility</div>
-              <h4>Four Constraint Families, One Closed Interval at Each Grid Point</h4>
-            </div>
-            <div>
-              <p>
-                A platform is <em>platform-admissible</em> when its sampled fixed-path timing constraints can be
-                written in TOPP-RA standard form &Omega;<sub>i</sub>&nbsp;=&nbsp;{(<em>u</em>,&nbsp;<em>x</em>)
-                | <em>a<sub>i</sub>u</em>&nbsp;+&nbsp;<em>b<sub>i</sub>x</em>&nbsp;+&nbsp;<em>c<sub>i</sub></em>
-                &nbsp;&isin;&nbsp;<em>C<sub>i</sub></em>} with <em>C<sub>i</sub></em> closed. The admissibility
-                theorem shows that (i) affine RNEA torque chains intersected with per-joint limits (serial),
-                (ii) bilateral cooperative wrench balance distributions (dual-arm), (iii) thrust-allocation
-                zonotopes intersected with a 1D affine path-coordinate line (aerial), and (iv)
-                geometry-conditioned affine bounds after connector path fixation (nonholonomic mobile) each
-                yield a closed acceleration interval at every grid point&mdash;so the shared TOPP-RA pass applies
-                without modification.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="column is-full">
-          <div class="method-card is-horizontal">
-            <div class="card-content">
-              <div class="card-tag">Platform Specification</div>
-              <h4>Seven Adapter Components Plug Into the Shared Scaffold</h4>
-            </div>
-            <div>
-              <p>
-                A new platform is integrated by specifying seven components&mdash;state space, task map,
-                candidate generator, node validity, edge predicate, timing-bound model, and planning-model
-                evaluator&mdash;while the geometric path selection and time-scaling stages operate unchanged.
-                Four structural adapter patterns recur: <em>product-space candidates</em> for shared-object
-                constraints, <em>implicit-base generation</em> for floating bases derived from arm reachability,
-                <em>auxiliary state</em> for kinematically coupled secondary axes, and
-                <em>connector-lifted edge predicates</em> for non-Euclidean mobility.
-              </p>
-            </div>
-          </div>
-        </div>
-
-      </div>
+      <p style="margin-top: 1.5rem;">
+        At each waypoint, inverse-kinematics candidates are screened for kinematic validity and by a
+        platform-model preview, and dynamic programming on a layered graph selects a configuration-continuous
+        path. The selected states are carried to a fixed smooth path, which one unmodified TOPP-RA pass times.
+        The decision is two-valued: GRAFT returns a timed trajectory that satisfies the platform model, or
+        rejects the path with a diagnostic naming the stage that failed.
+      </p>
     </div>
   </section>
 
@@ -311,11 +237,11 @@
         <div class="column">
           <h2 class="title is-3">One Condition, Four Platforms</h2>
           <p class="section-intro" style="max-width: 860px; margin: 0 auto;">
-            These four platforms constrain motion through entirely unrelated mechanisms&mdash;serial joint
-            torque, cooperative wrench balance, aerial thrust allocation, and nonholonomic wheel-rate and
-            arm-torque limits&mdash;yet each reduces to the <strong>same closed interval of admissible path
-            accelerations</strong>. One TOPP-RA solver therefore schedules all of them unchanged; only the
-            platform model plugs in.
+            These four platforms constrain motion through unrelated mechanisms&mdash;joint torque, cooperative
+            wrench balance, tilt-dependent thrust allocation, and nonholonomic rolling&mdash;yet the fixed-path
+            timing constraints of each reduce to <strong>a closed interval of admissible path
+            accelerations</strong>. One unmodified TOPP-RA solver therefore times all of them; only the platform
+            model plugs in.
           </p>
         </div>
       </div>
@@ -354,75 +280,9 @@
           <p style="text-align: center; font-weight: 700; margin-top: 0.5rem; color: var(--text-primary);">Nonholonomic Mobile Manipulator</p>
         </div>
       </div>
-      <p class="fig-caption" style="margin-top: 0.9rem; font-size: 0.9rem; line-height: 1.6; color: #4a4a4a; text-align: center;">
-        Representative GRAFT-planned, collision-aware accepted trajectories, one per platform class, on an
-        obstacle-avoidance scenario, looped.
+      <p class="fig-caption" style="margin-top: 0.75rem; font-size: 0.9rem; line-height: 1.6; color: #4a4a4a; text-align: center;">
+        Representative GRAFT-planned trajectories, one per platform class, on an obstacle-avoidance scenario.
       </p>
-
-      <div class="columns is-multiline" style="margin-top: 2rem;">
-
-        <div class="column is-half">
-          <div class="method-card">
-            <div class="card-content">
-              <div class="card-tag">SRM</div>
-              <h4>Serial Redundant Manipulator</h4>
-              <p style="margin-top: 0.6rem;">
-                A 7-DoF arm with one extra DoF and joint-torque limits. Its path-parameterized RNEA torque
-                (evaluated with Pinocchio) <em>&tau;</em>&nbsp;=&nbsp;<em>a</em>(<em>s</em>)<em>u</em>&nbsp;+&nbsp;<em>b</em>(<em>s</em>,<em>x</em>)<em>x</em>&nbsp;+&nbsp;<em>c</em>(<em>s</em>)
-                is affine in <em>u</em>, and each per-joint limit contributes a half-interval whose intersection
-                is a closed interval.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="column is-half">
-          <div class="method-card">
-            <div class="card-content">
-              <div class="card-tag">CDM</div>
-              <h4>Cooperative Dual-Arm Manipulator</h4>
-              <p style="margin-top: 0.6rem;">
-                Two arms rigidly grasping a shared object. Candidates live on a product configuration space
-                with object-consistency constraints; per-arm torque budgets are coupled through a bilateral
-                wrench-balance solve. Per-arm timing constraints reduce to the same affine coefficient form
-                as the serial case, so the intersection is again a closed interval.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="column is-half">
-          <div class="method-card">
-            <div class="card-content">
-              <div class="card-tag">OAM</div>
-              <h4>Omnidirectional Aerial Manipulator</h4>
-              <p style="margin-top: 0.6rem;">
-                Floating-base arm with tilt-rotor propulsion. Base pose is implied by an arm candidate via
-                reverse-chain kinematics. Feasibility requires the path-coordinate body wrench
-                <em>W</em>(<em>s</em>,<em>x</em>,<em>u</em>)&nbsp;&isin;&nbsp;<em>&Wscr;</em>(<em>&phi;</em>),
-                a 1D affine line through a thrust-allocation zonotope&mdash;an exact closed interval without
-                convex relaxation.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="column is-half">
-          <div class="method-card">
-            <div class="card-content">
-              <div class="card-tag">NMM</div>
-              <h4>Nonholonomic Mobile Manipulator</h4>
-              <p style="margin-top: 0.6rem;">
-                Differential-drive base + onboard arm. The edge predicate selects a kinematically valid
-                bounded-curvature connector (Dubins-style) between consecutive base states; the same
-                parameterization defines base motion for timing. Wheel-rate and acceleration limits combined
-                with sampled arm-torque bounds yield a closed acceleration interval on each connector segment.
-              </p>
-            </div>
-          </div>
-        </div>
-
-      </div>
     </div>
   </section>
 
@@ -432,66 +292,47 @@
         <div class="column"><h2 class="title is-3">Experiments</h2></div>
       </div>
 
-      <div class="columns is-centered" style="margin-top: 1rem;">
+      <p>
+        Every trajectory that GRAFT or a compared method returns is re-checked by a <strong>replay</strong>, a
+        time-domain simulation of the platform model at a 0.1&nbsp;ms step. A returned trajectory that passes is
+        <em>validated</em>; one that fails is a <em>false accept</em>. Recall is measured against the
+        <em>witnessed-feasible</em> paths, those that at least one compared method validates.
+      </p>
+
+      <div class="columns is-centered" style="margin-top: 2rem;">
         <div class="column is-full">
           <h3 class="title is-4">Uncurated Random-Path Screening</h3>
           <p>
-            For each platform we generate <em>N</em>&nbsp;=&nbsp;50 prescribed paths from random SE(3)
-            start/goal poses in the reachable region&mdash;the only pre-screen being endpoint-IK existence,
-            with obstacles randomized per path; no path is curated for feasibility. GRAFT is run as a
-            feasibility decision: it returns a timed trajectory or rejects the path. <strong>GRAFT-Full's
-            false accept is zero on all four classes</strong>&mdash;no accepted path fails the platform-model
-            check&mdash;while it recovers every path any compared method solves (recall&nbsp;1.0 against the
-            witnessed-feasible pool). A ten-times-budget independent search finds the candidate bank
-            near-saturated (no missed feasible path on SRM/NMM; only two more on CDM and one on OAM). The
-            witnessed-feasible fraction is 0.18&ndash;0.66, so GRAFT <em>rejects</em> the complementary
-            34&ndash;82% of each suite. A uniform TOPP-RA derating &alpha;&nbsp;=&nbsp;0.90 reserves a 10%
-            margin below the modeled limits.
+            Per platform, 100 prescribed paths connect random start and goal poses by obstacle-avoiding curves; no
+            path is curated for feasibility. <strong>None of GRAFT-Full's 203 returned trajectories fails the
+            replay</strong>, which bounds the false-accept rate at 3.0% per path on each class and 0.75% pooled
+            (one-sided 95% Clopper&ndash;Pearson). GRAFT-Full recovers every witnessed-feasible path on SRM, CDM and
+            OAM and 90 of 92 on NMM, and no compared method at its reported setting validates more on any class.
           </p>
 
           <div class="table-container" style="margin-top: 1.5rem;">
-            <table class="table is-bordered is-striped is-hoverable is-fullwidth has-text-centered">
+            <table class="table is-bordered is-striped is-hoverable is-fullwidth has-text-centered result-table">
               <thead>
-                <tr>
-                  <th rowspan="2" style="vertical-align: middle;">Platform</th>
-                  <th rowspan="2" style="vertical-align: middle;">Wit.</th>
-                  <th colspan="5">Recall</th>
-                  <th rowspan="2" style="vertical-align: middle;">Track (mm)</th>
-                </tr>
-                <tr>
-                  <th>Full</th><th>GRAFT-G</th><th>GRAFT-T</th><th>Greedy-NN</th><th>NullSp.</th>
-                </tr>
+                <tr><th></th><th>SRM</th><th>CDM</th><th>OAM</th><th>NMM</th></tr>
               </thead>
               <tbody>
-                <tr><td><strong>SRM</strong></td><td>27</td><td><strong>1.00</strong></td><td>0.52</td><td>0.00</td><td>0.63</td><td>0.19</td><td>1.0</td></tr>
-                <tr><td><strong>CDM</strong></td><td>9</td><td><strong>1.00</strong></td><td>1.00</td><td>0.00</td><td>&ndash;</td><td>&ndash;</td><td>9.2</td></tr>
-                <tr><td><strong>OAM</strong></td><td>26</td><td><strong>1.00</strong></td><td>0.00</td><td>0.00</td><td>&ndash;</td><td>&ndash;</td><td>0.06</td></tr>
-                <tr><td><strong>NMM</strong></td><td>33</td><td><strong>1.00</strong></td><td>0.52</td><td>0.00</td><td>&ndash;</td><td>&ndash;</td><td>0.96</td></tr>
+                <tr><td class="method">Witnessed-feasible paths</td><td>49</td><td>12</td><td>52</td><td>92</td></tr>
+                <tr><td class="method"><strong>Validated by GRAFT-Full</strong></td><td><strong>49</strong></td><td><strong>12</strong></td><td><strong>52</strong></td><td><strong>90</strong></td></tr>
+                <tr><td class="method">GRAFT-Full trajectories failing the replay</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td class="method">Best compared method</td><td>46<br><small>Ferrentino-DP<sup>a</sup></small></td><td>5<br><small>ClosedLoop-DLS</small></td><td>22<br><small>SequentialAllocation-DLS</small></td><td>52<br><small>Bayle-RVK</small></td></tr>
               </tbody>
             </table>
-            <p class="fig-caption" style="margin-top: 0.6rem;">
-              Recall on the uncurated screening suite (<em>N</em>&nbsp;=&nbsp;50 per platform). <em>Wit.</em>:
-              witnessed-feasible paths (solved by at least one compared method), the set against which recall
-              is measured. <em>Track</em>: 95th-percentile task-tracking error. Greedy-NN / NullSp.: serial-arm
-              baselines ("&ndash;": no named alternative).
-            </p>
+            <div class="note-lines">
+              <em>N</em>&nbsp;=&nbsp;100 paths per platform; each compared method runs at the best setting of its own parameter sweep.<br>
+              <sup>a</sup>Its configurations, timed by GRAFT's stage.
+            </div>
           </div>
-
-          <p style="margin-top: 1.5rem;">
-            Each stage carries part of this. Removing fixed-path time scaling (GRAFT-T) drops recall to zero
-            on every platform&mdash;an unscaled path satisfies no timing envelope. Removing graph-based
-            selection (GRAFT-G) halves recall on SRM and NMM (0.52) and collapses it on OAM (0.00), while
-            matching GRAFT-Full on CDM (1.00), where the rigid cooperative grasp leaves little branch
-            ambiguity. On the serial arm GRAFT-Full also exceeds greedy nearest-neighbor tracking (0.63) and a
-            null-space damped-least-squares rollout (0.19). No setting ever induces a false accept:
-            completeness tracks the candidate budget, soundness does not.
-          </p>
 
           <div class="video-grid" aria-label="Uncurated random-path screening, per platform" style="margin-top: 1.5rem;">
             <div>
               <figure style="margin: 0; aspect-ratio: 1 / 1; overflow: hidden; border: 1px solid var(--border-color); border-radius: 8px; background: #0f172a;">
                 <video autoplay muted loop playsinline preload="metadata" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                  <source src="static/videos/expb_srm.mp4" type="video/mp4">
+                  <source src="static/videos/rev/ivb/ivb_srm.mp4" type="video/mp4">
                 </video>
               </figure>
               <p style="text-align: center; font-weight: 700; margin-top: 0.5rem; color: var(--text-primary);">SRM</p>
@@ -499,7 +340,7 @@
             <div>
               <figure style="margin: 0; aspect-ratio: 1 / 1; overflow: hidden; border: 1px solid var(--border-color); border-radius: 8px; background: #0f172a;">
                 <video autoplay muted loop playsinline preload="metadata" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                  <source src="static/videos/expb_cdm.mp4" type="video/mp4">
+                  <source src="static/videos/rev/ivb/ivb_cdm.mp4" type="video/mp4">
                 </video>
               </figure>
               <p style="text-align: center; font-weight: 700; margin-top: 0.5rem; color: var(--text-primary);">CDM</p>
@@ -507,7 +348,7 @@
             <div>
               <figure style="margin: 0; aspect-ratio: 1 / 1; overflow: hidden; border: 1px solid var(--border-color); border-radius: 8px; background: #0f172a;">
                 <video autoplay muted loop playsinline preload="metadata" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                  <source src="static/videos/expb_oam.mp4" type="video/mp4">
+                  <source src="static/videos/rev/ivb/ivb_oam.mp4" type="video/mp4">
                 </video>
               </figure>
               <p style="text-align: center; font-weight: 700; margin-top: 0.5rem; color: var(--text-primary);">OAM</p>
@@ -515,14 +356,14 @@
             <div>
               <figure style="margin: 0; aspect-ratio: 1 / 1; overflow: hidden; border: 1px solid var(--border-color); border-radius: 8px; background: #0f172a;">
                 <video autoplay muted loop playsinline preload="metadata" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                  <source src="static/videos/expb_nmm.mp4" type="video/mp4">
+                  <source src="static/videos/rev/ivb/ivb_nmm.mp4" type="video/mp4">
                 </video>
               </figure>
               <p style="text-align: center; font-weight: 700; margin-top: 0.5rem; color: var(--text-primary);">NMM</p>
             </div>
           </div>
           <p class="fig-caption" style="margin-top: 0.75rem; font-size: 0.9rem; line-height: 1.6; color: #4a4a4a; text-align: center;">
-            Representative GRAFT-planned trajectories from the uncurated random-path screening suite (SRM, CDM, OAM, NMM).
+            Representative GRAFT-Full trajectories from the uncurated screening suite, one per class.
           </p>
         </div>
       </div>
@@ -531,45 +372,40 @@
         <div class="column is-full">
           <h3 class="title is-4">Preview-Recall Under Load</h3>
           <p>
-            To isolate the platform-model preview, we hold the path geometry fixed and sweep a bounded
-            external load through three bins (low / mid / crushing), comparing GRAFT-Full against GRAFT-P
-            (the same engine with only the preview disabled). GRAFT-Full holds recall at 1.0 on every feasible
-            bin with zero false accepts, while GRAFT-P loses recall exactly where the load engages the model:
-            at mid load it collapses (SRM 0.00, CDM 0.08, NMM 0.51) and on OAM&mdash;where gravity loads the
-            allocation everywhere&mdash;it fails from low load up (0.00 throughout). GRAFT-P's dropped paths
-            are <em>rejected</em> by the post-timing audit, not falsely accepted; the preview is the mechanism
-            that turns a sound-but-low-recall decision into a sound-and-high-recall one.
+            To isolate the platform-model preview, the path is held fixed and an external load is swept through
+            low, mid and crushing bins, with 50 trials per bin. GRAFT-P differs from GRAFT-Full only in omitting
+            the preview during selection. GRAFT-Full holds recall at 1.0 in every bin, while GRAFT-P loses recall
+            where the load engages the platform model. The loss is in recall, not soundness: no trajectory either
+            method returns fails the replay.
           </p>
 
           <div class="table-container" style="margin-top: 1.5rem;">
-            <table class="table is-bordered is-striped is-hoverable is-fullwidth has-text-centered">
+            <table class="table is-bordered is-striped is-hoverable is-fullwidth has-text-centered result-table">
               <thead>
                 <tr><th>Platform</th><th>Method</th><th>Low</th><th>Mid</th><th>Crushing</th></tr>
               </thead>
               <tbody>
-                <tr><td rowspan="2"><strong>SRM</strong></td><td>GRAFT-Full</td><td>1.00</td><td><strong>1.00</strong></td><td>1.00 (13)</td></tr>
-                <tr><td>GRAFT-P</td><td>1.00</td><td>0.00</td><td>0.00 (13)</td></tr>
-                <tr><td rowspan="2"><strong>CDM</strong></td><td>GRAFT-Full</td><td>1.00</td><td><strong>1.00</strong></td><td>&ndash; (0)</td></tr>
-                <tr><td>GRAFT-P</td><td>1.00</td><td>0.08</td><td>&ndash; (0)</td></tr>
-                <tr><td rowspan="2"><strong>OAM</strong></td><td>GRAFT-Full</td><td><strong>1.00</strong></td><td><strong>1.00</strong></td><td><strong>1.00</strong></td></tr>
+                <tr><td rowspan="2"><strong>SRM</strong></td><td>GRAFT-Full</td><td>1.00</td><td><strong>1.00</strong></td><td><strong>1.00</strong> (12)</td></tr>
+                <tr><td>GRAFT-P</td><td>1.00</td><td>0.30</td><td>0.00</td></tr>
+                <tr><td rowspan="2"><strong>CDM</strong></td><td>GRAFT-Full</td><td>1.00</td><td><strong>1.00</strong></td><td><strong>1.00</strong> (12)</td></tr>
+                <tr><td>GRAFT-P</td><td>1.00</td><td>0.20</td><td>0.00</td></tr>
+                <tr><td rowspan="2"><strong>OAM</strong></td><td>GRAFT-Full</td><td><strong>1.00</strong></td><td><strong>1.00</strong></td><td><strong>1.00</strong> (14)</td></tr>
                 <tr><td>GRAFT-P</td><td>0.00</td><td>0.00</td><td>0.00</td></tr>
-                <tr><td rowspan="2"><strong>NMM</strong></td><td>GRAFT-Full</td><td>1.00</td><td><strong>1.00</strong></td><td>1.00 (5)</td></tr>
-                <tr><td>GRAFT-P</td><td>1.00</td><td>0.51</td><td>0.00 (5)</td></tr>
+                <tr><td rowspan="2"><strong>NMM</strong></td><td>GRAFT-Full</td><td>1.00</td><td>1.00</td><td><strong>1.00</strong> (11)</td></tr>
+                <tr><td>GRAFT-P</td><td>1.00</td><td>1.00</td><td>0.00</td></tr>
               </tbody>
             </table>
-            <p class="fig-caption" style="margin-top: 0.6rem;">
-              Preview-recall under swept external load (<em>N</em>&nbsp;=&nbsp;50 per bin); GRAFT-Full false
-              accept is 0. "&ndash;": no witnessed-feasible path; parenthetical: witnessed-feasible set size
-              when&nbsp;&lt;&nbsp;50.
-            </p>
+            <div class="note-lines">
+              Recall out of <em>N</em>&nbsp;=&nbsp;50 trials per bin. In parentheses, when below 50: the witnessed-feasible trials.
+            </div>
           </div>
 
-          <div style="margin-top: 1.5rem;">
+          <div style="margin-top: 2rem;">
             <div class="video-grid" aria-label="Preview-recall under load videos by platform" style="grid-template-columns: repeat(4, minmax(0, 1fr));">
               <div>
                 <figure class="video-tile" style="aspect-ratio: 9 / 16;">
                   <video controls muted playsinline preload="metadata">
-                    <source src="static/videos/ivc_srm.mp4" type="video/mp4">
+                    <source src="static/videos/rev/ivc/ivc_srm.mp4" type="video/mp4">
                   </video>
                 </figure>
                 <p style="text-align: center; font-weight: 700; margin-top: 0.5rem; color: var(--text-primary);">SRM</p>
@@ -577,7 +413,7 @@
               <div>
                 <figure class="video-tile" style="aspect-ratio: 9 / 16;">
                   <video controls muted playsinline preload="metadata">
-                    <source src="static/videos/ivc_cdm.mp4" type="video/mp4">
+                    <source src="static/videos/rev/ivc/ivc_cdm.mp4" type="video/mp4">
                   </video>
                 </figure>
                 <p style="text-align: center; font-weight: 700; margin-top: 0.5rem; color: var(--text-primary);">CDM</p>
@@ -585,7 +421,7 @@
               <div>
                 <figure class="video-tile" style="aspect-ratio: 9 / 16;">
                   <video controls muted playsinline preload="metadata">
-                    <source src="static/videos/ivc_oam.mp4" type="video/mp4">
+                    <source src="static/videos/rev/ivc/ivc_oam.mp4" type="video/mp4">
                   </video>
                 </figure>
                 <p style="text-align: center; font-weight: 700; margin-top: 0.5rem; color: var(--text-primary);">OAM</p>
@@ -593,17 +429,16 @@
               <div>
                 <figure class="video-tile" style="aspect-ratio: 9 / 16;">
                   <video controls muted playsinline preload="metadata">
-                    <source src="static/videos/ivc_nmm.mp4" type="video/mp4">
+                    <source src="static/videos/rev/ivc/ivc_nmm.mp4" type="video/mp4">
                   </video>
                 </figure>
                 <p style="text-align: center; font-weight: 700; margin-top: 0.5rem; color: var(--text-primary);">NMM</p>
               </div>
             </div>
-            <p class="fig-caption" style="margin-top: 0.6rem;">
-              Preview-driven branch selection under load (SRM, CDM, OAM, NMM; left to right).
-              GRAFT-Full uses the platform-model preview to steer selection to a load-feasible configuration,
-              while GRAFT-P's preview-less selection can drive the platform into an actuation-infeasible
-              configuration under the same swept load.
+            <p class="fig-caption" style="margin-top: 0.75rem; font-size: 0.9rem; line-height: 1.6; color: #4a4a4a; text-align: center;">
+              One trial per platform with the same path and load (arrow) for both methods. Top: GRAFT-Full. Bottom:
+              GRAFT-P. A panel turns green when the trajectory passes every check, and red where GRAFT-P's selection
+              exceeds the static load limit.
             </p>
           </div>
         </div>
@@ -613,17 +448,14 @@
         <div class="column is-full">
           <h3 class="title is-4">Dual-Arm Hardware Execution</h3>
           <p>
-            A GRAFT-planned cooperative dual-arm trajectory ran on a physical OpenArm system (two 7-DOF arms
-            on a shared base) under its default position controller. In a barcode-scanning handling sequence,
-            the arms pick a bucket, lift and tilt it so a barcode faces a fixed camera, and place it on a
-            conveyor. The time-stamped joint command sequence played back to completion&mdash;no controller
-            abort, protective stop, or reported limit-exceedance&mdash;and the executed object motion followed
-            the planned path. This is a qualitative single-platform demonstration; the quantitative
-            cross-platform claims rest on the simulation suites above.
+            A GRAFT-planned cooperative trajectory ran on a physical dual-arm robot under its default position
+            controller. Both arms lift a bucket, turn its barcode to a camera and place it on a conveyor, without
+            controller abort, protective stop, or reported limit exceedance. The run is a qualitative
+            demonstration; the quantitative claims rest on the simulation suites.
           </p>
           <div style="max-width: 900px; margin: 1.5rem auto 0;">
-            <video controls muted loop playsinline preload="metadata" style="width: 100%; border-radius: 8px;">
-              <source src="static/videos/ivd_cut.mp4" type="video/mp4">
+            <video controls muted playsinline preload="metadata" style="width: 100%; border-radius: 8px;">
+              <source src="static/videos/rev/ivd/ivd.mp4" type="video/mp4">
             </video>
           </div>
         </div>
@@ -633,28 +465,20 @@
         <div class="column is-full">
           <h3 class="title is-4">Industrial Deployment: Rail-Arm Box Extraction</h3>
           <p>
-            A RoboDK cell beyond the four classes&mdash;a six-axis Yaskawa Motoman GP110 arm on a one-axis
-            linear rail (<em>r</em>&nbsp;=&nbsp;1)&mdash;extracts a 2&nbsp;m box from a freight bed to a
-            conveyor. It is admitted unmodified because its actuation bounds are affine in the path variables
-            (case&nbsp;(ii) of the admissibility theorem). The box cantilevers past the bed edge, so its load
-            rises along the path&mdash;a timing-invariant load the static preview <em>V<sub>k</sub></em>
-            evaluates directly. Sweeping the box mass, load-aware selection keeps the path feasible up to a
-            <strong>108&nbsp;kg</strong> box, against 92&nbsp;kg for the best load-agnostic method
-            (NullSpace-DLS) and 89&nbsp;kg for GRAFT-P&mdash;an <strong>~17% higher feasible payload</strong>,
-            carried to just below the arm's rated 110&nbsp;kg envelope (at a 10% derating margin). Beyond the
-            ceiling the static joint torque exceeds the actuator bound where the load binds, so every candidate
-            at that waypoint fails <em>V<sub>k</sub></em> and the path is rejected at the geometric stage,
-            before timing&mdash;a diagnostic naming the binding joint, not an executed trajectory.
+            Beyond the four classes, an industrial workcell supplied as a RoboDK program, a six-axis arm on a linear
+            rail, pulls a box off a truck bed and sets it on a conveyor. On the extraction path GRAFT-Full keeps the
+            path feasible up to a <strong>105&nbsp;kg</strong> box, against 85&nbsp;kg for GRAFT-P and 84&nbsp;kg
+            for NullSpace-DLS. Over twenty independently drawn paths GRAFT-Full validates seventeen, and on all of
+            them load-aware selection raises the feasible payload above the better load-agnostic method, by a
+            <strong>mean 17.4%</strong> (95% interval 14.1&ndash;20.7%).
           </p>
           <div style="max-width: 1100px; margin: 1.5rem auto 0;">
             <video controls muted playsinline preload="metadata" style="width: 100%; border-radius: 8px;">
-              <source src="static/videos/gp110_robodk.mp4" type="video/mp4">
+              <source src="static/videos/rev/ive/ive.mp4" type="video/mp4">
             </video>
             <p class="fig-caption" style="margin-top: 0.75rem; font-size: 0.9rem; line-height: 1.6; color: #4a4a4a; text-align: center;">
-              The three methods on the same 102&nbsp;kg box. GRAFT-Full's load-aware selection stays feasible,
-              while GRAFT-P (preview disabled) and NullSpace-DLS (load-agnostic) do not. At 102&nbsp;kg&mdash;above
-              their feasible-payload ceilings (GRAFT-P 89&nbsp;kg, NullSpace-DLS 92&nbsp;kg) but below GRAFT-Full's
-              108&nbsp;kg&mdash;only load-aware selection keeps the dominant joint within its torque limit.
+              The extraction path with a 102&nbsp;kg box. GRAFT-Full's selection holds the dominant joint within
+              its torque bound, while both load-agnostic selections exceed it (red).
             </p>
           </div>
         </div>
@@ -662,15 +486,13 @@
 
       <div class="columns is-centered" style="margin-top: 3rem;">
         <div class="column is-full">
-          <h3 class="title is-4">Experimental Setup</h3>
+          <h3 class="title is-4">Scope</h3>
           <p>
-            All experiments run on an AMD Ryzen 5 7500F CPU (12 threads, 30&nbsp;GiB RAM) with an NVIDIA
-            GeForce RTX 5070 GPU on Ubuntu 22.04.5 LTS. The implementation uses Python 3.10, NumPy 1.26,
-            SciPy 1.15, and Pinocchio 3.9 (ROS&nbsp;2 Humble) for rigid-body dynamics. Candidate generation,
-            node validity, edge feasibility, and DAG relaxation use platform-specific native or GPU batch
-            backends where enabled; path-coordinate interval construction and the backward/forward reachability
-            sweep run on CPU. Reported wall times measure task-level planning through accepted schedule
-            construction and exclude the post-planning simulation pass.
+            Acceptance establishes feasibility on the platform model: timing constraints hold over each cell of the
+            delivered curve, and the other checks hold at their samples. It is not a continuous-time guarantee for
+            the sampled checks, and the model omits contact mechanics, aerodynamic drag, drivetrain torque and joint
+            flexibility. A rejection is relative to the sampled candidate bank, not a proof that the path admits no
+            realization.
           </p>
         </div>
       </div>
@@ -678,35 +500,6 @@
     </div>
   </section>
 
-  <section class="section hero is-light authors-section" aria-labelledby="authors-heading">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered has-text-centered">
-        <div class="column">
-          <h2 id="authors-heading" class="title is-3">Authors</h2>
-
-          <div class="author-grid">
-            <article id="daum-park" class="author-card">
-              <img class="author-photo" src="static/images/author_daum_park.webp"
-                   alt="Portrait of Daum Park" width="360" height="450" loading="lazy">
-              <div class="author-card-content">
-                <h3 class="title is-4">Daum Park</h3>
-                <p>Department of Mechanical Engineering<br>Kyung Hee University</p>
-              </div>
-            </article>
-
-            <article id="sanghyun-kim" class="author-card">
-              <img class="author-photo" src="static/images/author_sanghyun_kim.webp"
-                   alt="Portrait of Sanghyun Kim" width="360" height="450" loading="lazy">
-              <div class="author-card-content">
-                <h3 class="title is-4">Sanghyun Kim</h3>
-                <p>Department of Mechanical Engineering<br>Kyung Hee University</p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   </main>
 
